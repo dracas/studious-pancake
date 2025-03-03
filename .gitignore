@@ -1,0 +1,12 @@
+.idea/
+virtual_env/
+screenshots/
+
+__pycache__/
+*.pyc
+*.pyo
+
+drivers/
+*.exe
+*.chromedriver
+*.geckodriver
