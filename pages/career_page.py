@@ -1,16 +1,23 @@
+from selenium.webdriver.common.by import By
+
 from .base_page import BasePage
-from .locators import CareerPageLocators
 
 
 class CareerPage(BasePage):
+    # Locators:
+    our_locations_block = (By.CSS_SELECTOR, "#career-our-location")
+    find_your_calling_block = (By.CSS_SELECTOR, "#career-find-our-calling")
+    life_at_insider_block = (By.XPATH, "//section[4]")
+
+
     def should_be_career_page(self):
         self.should_be_career_url()
 
         missing_blocks = [
             name for locator, name in [
-                (CareerPageLocators.OUR_LOCATIONS_BLOCK, "Our Locations"),
-                (CareerPageLocators.FIND_YOUR_CALLING_BLOCK, "Find Your Calling"),
-                (CareerPageLocators.LIFE_AT_INSIDER_BLOCK, "Life at Insider")
+                (self.our_locations_block, "Our Locations"),
+                (self.find_your_calling_block, "Find Your Calling"),
+                (self.life_at_insider_block, "Life at Insider")
             ] if not self.is_element_visible(locator)
         ]
 
